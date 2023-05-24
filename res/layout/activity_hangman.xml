@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#100F0F"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iSeeYou"
+            android:layout_width="240dp"
+            android:layout_height="483dp"
+            app:srcCompat="@drawable/eyeball"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="69dp"
+            tools:layout_editor_absoluteY="312dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/wordLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#100F0F"
+        android:text="Word: "
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/letterField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wordLabel"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FFFFFF"
+        android:drawableTint="#FFFFFF"
+        android:foregroundTint="#FFFFFF"
+        android:hint="Enter a letter"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FF0000"
+        android:textColorHint="#A6A4A4"
+        android:textColorLink="#FF0000" />
+
+    <Button
+        android:id="@+id/guessButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/letterField"
+        android:layout_marginTop="16dp"
+        android:text="Guess"
+        android:textColorHighlight="#FF0000"
+        android:textColorLink="#FF0000" />
+
+    <TextView
+        android:id="@+id/attemptsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/guessButton"
+        android:layout_marginTop="16dp"
+        android:text="Attempts left: 6"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+</RelativeLayout>

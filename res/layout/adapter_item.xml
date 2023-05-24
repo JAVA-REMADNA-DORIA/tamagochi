@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/item_icon"
+        android:layout_width="97dp"
+        android:layout_height="97dp"
+        android:src="@drawable/icon_nigiri">
+    </ImageView>
+
+    <RelativeLayout
+        android:layout_width="285dp"
+        android:layout_height="75dp"
+        android:layout_margin="@dimen/example_medium_margin">
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item_default_name"></TextView>
+
+        <TextView
+            android:id="@+id/item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_name"
+            android:text="@string/item_default_price"></TextView>
+
+        <TextView
+            android:id="@+id/item_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_price"
+            android:layout_marginTop="0dp"
+            android:text="@string/item_default_quantity"></TextView>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">TamagoPersona</string>
+    <string name="happiness_msg">Jauge de bonheur : %1$d/20</string>
+    <string name="hungry_msg">Jauge de faim : %1$d/20</string>
+    <string name="money">0 ћ</string>
+    <string name="shop"></string>
+    <string name="inventary"></string>
+    <string name="state_msg">Morgana va bien</string>
+    <string name="item_default_name">Article</string>
+    <string name="item_default_price">0 ћ</string>
+    <string name="item_default_quantity">En stock: 1</string>
+    <string name="result_draw">Ex aequo !</string>
+    <string name="result_win">Gagné !</string>
+    <string name="result_lose">Perdu !</string>
+</resources>

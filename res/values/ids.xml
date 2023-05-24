@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="item_name" type="id">@id/item_name</item>
+    <item name="item_price" type="id">@id/item_price</item>
+    <item name="item_quantity" type="id">@id/item_quantity</item>
+    <item name="item_icon" type="id">@id/item_icon</item>
+</resources>
