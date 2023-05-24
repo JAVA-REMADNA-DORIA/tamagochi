@@ -1,0 +1,2 @@
+# tamagochi
+Un "vrai" tamagochi
