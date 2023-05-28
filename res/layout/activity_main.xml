@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="92dp"
             android:gravity="center|center_horizontal"
-            android:text="@string/money"
+            android:text="@string/money_msg"
             android:textColor="@color/white"
             android:textSize="24sp" />
 

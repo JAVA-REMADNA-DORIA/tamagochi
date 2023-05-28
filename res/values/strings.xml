@@ -2,7 +2,7 @@
     <string name="app_name">TamagoPersona</string>
     <string name="happiness_msg">Jauge de bonheur : %1$d/20</string>
     <string name="hungry_msg">Jauge de faim : %1$d/20</string>
-    <string name="money">0 ћ</string>
+    <string name="money_msg">%d ћ</string>
     <string name="shop"></string>
     <string name="inventary"></string>
     <string name="state_msg">Morgana va bien</string>

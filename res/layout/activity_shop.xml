@@ -5,7 +5,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/walletText"
+        android:id="@id/money"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Porte-monnaie: 0.0"
@@ -17,7 +17,7 @@
         android:id="@+id/shop_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/walletText"
+        android:layout_below="@id/money"
         android:layout_above="@+id/backButton" />
 
     <Button

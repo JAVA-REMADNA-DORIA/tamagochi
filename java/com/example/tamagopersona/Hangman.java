@@ -16,6 +16,8 @@ public class Hangman extends AppCompatActivity {
     private String secretWord = "donne moi vingt cellya";
     private StringBuilder guessedWord;
     private int attemptsLeft = 6;
+    int nino;
+    int nino2;
     private TextView wordLabel;
     private EditText letterField;
     private Button guessButton;
@@ -25,7 +27,8 @@ public class Hangman extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hangman);
-
+        nino = MainActivity.hungryValue;
+        nino2 = MainActivity.happinessValue;
         wordLabel = findViewById(R.id.wordLabel);
         letterField = findViewById(R.id.letterField);
         guessButton = findViewById(R.id.guessButton);
@@ -42,17 +45,18 @@ public class Hangman extends AppCompatActivity {
         updateAttemptsLabel();
     }
 
+    //trouver la lettre
     private void guessLetter() {
         String letter = letterField.getText().toString().toLowerCase();
         letterField.getText().clear();
 
         if (letter.length() != 1) {
-            showAlert("Please enter a single letter.");
+                showAlert("N'entrez qu'une lettre");
             return;
         }
 
         if (!Character.isLetter(letter.charAt(0))) {
-            showAlert("Please enter a valid letter.");
+            showAlert("Entrez une lettre.");
             return;
         }
 
@@ -79,6 +83,7 @@ public class Hangman extends AppCompatActivity {
         }
     }
 
+    //apparition des lettres dans la phrase
     private void updateWordLabel() {
         if (guessedWord == null) {
             guessedWord = new StringBuilder(secretWord.length());
@@ -91,30 +96,38 @@ public class Hangman extends AppCompatActivity {
             }
         }
 
-        wordLabel.setText("Word: " + guessedWord.toString());
+        wordLabel.setText("Phrase: " + guessedWord.toString());
     }
 
+    //tentatives restantes
     private void updateAttemptsLabel() {
-        attemptsLabel.setText("Attempts left: " + attemptsLeft);
+        attemptsLabel.setText("Chances: " + attemptsLeft);
     }
 
+    //fin du jeu
     private void endGame(boolean won) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Game Over");
+        builder.setTitle("Partie finie");
 
-        Intent intent = new Intent();
         if (won) {
-            builder.setMessage("Congratulations! You won!");
+            nino2 += 2;
+            Wallet.addMoney(10);
+            builder.setMessage("Félicitation ! Du coup c'est oui ou c'est non ? ^^");
         } else {
-            builder.setMessage("Game over. You lost.");
+            nino2 -= 2;
+            builder.setMessage("Perdu.");
         }
 
-        setResult(RESULT_CANCELED, intent); // Utilisez RESULT_CANCELED lorsque le joueur perd
+        MainActivity.happinessValue = nino2;
+        MainActivity.updateMoney();
+
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(Hangman.this, MainActivity.class);
+                MainActivity.hungryValue = nino;
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+
             }
         });
 
@@ -123,6 +136,7 @@ public class Hangman extends AppCompatActivity {
         dialog.show();
     }
 
+    //reinitialisation de la boucle de jeu
     private void resetGame() {
         secretWord = "donne moi vingt cellya";
         guessedWord = null;
@@ -131,9 +145,10 @@ public class Hangman extends AppCompatActivity {
         updateAttemptsLabel();
     }
 
+    //si erreur du joueur
     private void showAlert(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Invalid Input");
+        builder.setTitle("Entrée invalide");
         builder.setMessage(message);
         builder.setPositiveButton("OK", null);
         AlertDialog dialog = builder.create();

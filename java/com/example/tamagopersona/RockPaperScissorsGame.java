@@ -17,6 +17,7 @@ public class RockPaperScissorsGame extends AppCompatActivity {
 
     private ImageView playerChoiceImageView, computerChoiceImageView;
     private TextView resultTextView;
+    int nino2,money;
     private Button rockButton, paperButton, scissorsButton;
 
     private int playerScore, computerScore;
@@ -29,7 +30,8 @@ public class RockPaperScissorsGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rock_paper_scissors_game);
-
+        nino2 = MainActivity.happinessValue;
+        money = Wallet.getMoney();
         playerChoiceImageView = findViewById(R.id.player_choice_image_view);
         computerChoiceImageView = findViewById(R.id.computer_choice_image_view);
         resultTextView = findViewById(R.id.result_text_view);
@@ -37,6 +39,7 @@ public class RockPaperScissorsGame extends AppCompatActivity {
         paperButton = findViewById(R.id.paper_button);
         scissorsButton = findViewById(R.id.scissors_button);
 
+        //bouton pierre
         rockButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +47,7 @@ public class RockPaperScissorsGame extends AppCompatActivity {
             }
         });
 
+        //bouton papier
         paperButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,6 +55,7 @@ public class RockPaperScissorsGame extends AppCompatActivity {
             }
         });
 
+        //bouton ciseaux
         scissorsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +64,7 @@ public class RockPaperScissorsGame extends AppCompatActivity {
         });
     }
 
+    //boucle du jeu
     private void playGame(int playerChoice) {
         int computerChoice = generateComputerChoice();
 
@@ -84,11 +90,13 @@ public class RockPaperScissorsGame extends AppCompatActivity {
         }
     }
 
+    //choix aléatoire de l'ordinateur
     private int generateComputerChoice() {
         Random random = new Random();
         return random.nextInt(3);
     }
 
+    //image apparaissant lors du choix de chaque joueur
     private void setChoiceImage(ImageView imageView, int choice) {
         switch (choice) {
             case ROCK:
@@ -103,38 +111,44 @@ public class RockPaperScissorsGame extends AppCompatActivity {
         }
     }
 
+    //condition de victoire
     private int determineResult(int playerChoice, int computerChoice) {
         if (playerChoice == computerChoice) {
-            return 0; // Draw
+            return 0;
         } else if ((playerChoice == ROCK && computerChoice == SCISSORS) ||
                 (playerChoice == PAPER && computerChoice == ROCK) ||
                 (playerChoice == SCISSORS && computerChoice == PAPER)) {
-            return 1; // Win
+            return 1; // victoire
         } else {
-            return -1; // Lose
+            return -1; // défaite
         }
     }
 
+    //score
     private void displayScores() {
-        Toast.makeText(this, "Player: " + playerScore + " vs Computer: " + computerScore, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Joueur: " + playerScore + " vs Morgana: " + computerScore, Toast.LENGTH_SHORT).show();
     }
 
+    //fin de jeu si 3 victoires et réinitialisation
     private void endGame() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Game Over");
+        builder.setTitle("Fin de partie");
 
         if (playerScore == 3) {
-            builder.setMessage("Victory!");
-            setResult(RESULT_OK);
+            nino2 += 2;
+            Wallet.addMoney(10);
+            builder.setMessage("Gagné!");
         } else {
-            builder.setMessage("Defeat!");
-            setResult(RESULT_CANCELED);
-        }
+            nino2 -= 2;
+            builder.setMessage("Perdu!");
 
+        }
+        MainActivity.happinessValue = nino2;
+        MainActivity.updateHappiness();
+        MainActivity.updateMoney();
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                setResult(RESULT_OK);
                 finish();
             }
         });
