@@ -15,3 +15,8 @@ Un "vrai" tamagochi
     - Vous avez commis un infanticide ? Pas de problème, acheter un billet pour la réincarnation avec "Truck Sama à la rescousse" 
 
 ⚠️L'achat d'une réincarnation peut entraîner des effets secondaires et l'achat de Miams et de Xanax est réglementé par la Fédération internationale de l'industrie du médicament. Seule une dose de Miam ou de Xanax peut être acheté à la fois.
+
+# Comment jouer ? 
+
+Téléchargez l'apk disponible ci-dessus.
+A très vite pour de nouvelles aventures !
